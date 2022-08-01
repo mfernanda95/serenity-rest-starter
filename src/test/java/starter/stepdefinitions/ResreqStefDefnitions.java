@@ -1,8 +1,13 @@
+package starter.stepdefinitions;
+
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.rest.SerenityRest;
 import net.serenitybdd.screenplay.Actor;
+import net.serenitybdd.screenplay.actors.OnStage;
+import net.serenitybdd.screenplay.actors.OnlineCast;
 import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
 import net.serenitybdd.screenplay.rest.interactions.Get;
 import org.seleniumhq.jetty9.server.Utf8HttpWriter;
@@ -13,13 +18,15 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 
 //theActorCalled(actor).a
 public class ResreqStefDefnitions {
+    @Before
+    public void setTheStage() {
+        OnStage.setTheStage(new OnlineCast());
+    }
 
     public static final String restApiUrl = "";
     @Given("{string} el entrenador")
     public void elEntrenador(String actor) {
-//        theActorCalled(actor).attemptsTo();
-        Actor actor1 = Actor.named(actor)
-                .whoCan(CallAnApi.at(restApiUrl));
+        theActorCalled(actor).whoCan(CallAnApi.at(restApiUrl));
     }
 
     @When("accede a su lista de alumnos")
