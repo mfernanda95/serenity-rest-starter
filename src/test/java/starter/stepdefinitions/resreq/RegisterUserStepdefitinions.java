@@ -1,4 +1,4 @@
-package starter.stepdefinitions;
+package starter.stepdefinitions.resreq;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -6,24 +6,23 @@ import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
 import org.apache.http.HttpStatus;
-import starter.questions.ResponseCode;
 import starter.tasks.RegisterUser;
 
-import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.rest.questions.ResponseConsequence.seeThatResponse;
-import static org.hamcrest.CoreMatchers.*;
-import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.CoreMatchers.notNullValue;
 
 public class RegisterUserStepdefitinions {
     public static final String REST_API_URL = "https://reqres.in/";
     public static final String PATH = "api";
     //register https://reqres.in/api/register
+
     Actor actorOfScenario;
     @Given("{string} es un cliente que quiere poder administrar sus productos bancaarios")
     public void EsUnClienteQueQuierePoderAdministrarSusProductosBancaarios(String actor) {
          actorOfScenario = Actor.named(actor)
                 .whoCan(CallAnApi.at(REST_API_URL+PATH));
     }
+
     @When("el envia la informacion requerida para el registro")
     public void elEnviaLaInformacionRequeridaParaElRegistro() {
         String registerUserInfo =  "{\n" +
