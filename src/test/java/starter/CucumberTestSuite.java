@@ -13,6 +13,7 @@ import static io.cucumber.junit.CucumberOptions.SnippetType.CAMELCASE;
         glue = { "starter.stepdefinitions"},
 //        features = "src/test/resources/features",
         features = "classpath:features",
+        tags = "@my-test",
         snippets = CAMELCASE
 )
 public class CucumberTestSuite {}
