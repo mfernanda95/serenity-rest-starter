@@ -31,6 +31,7 @@ public class AToken implements Fact {
                         requestSpecification -> requestSpecification
                                 .contentType(ContentType.JSON)
                                 .body(userCredentials)
+                                .relaxedHTTPSValidation()
                 )
         );
         token = SerenityRest.lastResponse().body().jsonPath().getString("token");

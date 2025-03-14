@@ -12,3 +12,4 @@ Feature: Eliminar reservas
     Examples:
     |user|password|idBooking|
     |eve.holt@reqres.in|pistol|3903|
+    |eve.holt@reqres.in|pistol|3903|
